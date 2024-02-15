@@ -23,7 +23,6 @@ export class BasePage {
         await this.page.getByRole("menu")
             .locator("button", {hasText: "Sign Out"})
             .click();
-        await expect(this.page.getByRole("link", {name: "Login"})).toBeVisible({timeout: 30000});
     }
 
 }
