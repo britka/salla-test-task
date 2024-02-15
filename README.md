@@ -24,15 +24,14 @@ To reach this you may use `.env.example` file.
 > All needed software should be installed: nodejs, playwright etc.
 
 ### How to run:
-Run by default. By default, tests will run in 3 browsers. Chromium, firefox, webkit in multithread.
+Run by default on your local machine in headed mode. By default, tests will run in 3 browsers. Chromium, firefox, webkit in multithread.
 ```commandline
-npx playwright test tests 
+npx playwright test --headed
 ```
-To run tests for appropriate browser, you should do something like this
+To run tests for appropriate browser, you should do something like this  
 ```commandline
-npx playwright test tests --progect=firefox
+npx playwright test tests --progect=firefox --headed
 ```
-this will run test for `firefox` browser in multithread   
+this will run test for `firefox` browser in multithread in headed mode  
 
->[!NOTE] 
-> FRom time to time tests on webkit are failed on the login page.
+
