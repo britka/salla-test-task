@@ -9,11 +9,6 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: SpicyPizza/create-envfile@v2.0
-      with:
-        envkey_USER_EMAIL: ${{vars.USER_EMAIL}}
-        envkey_USER_PASSWORD: ${{vars.USER_PASSWORD}}
-        envkey_BASE_URL: ${{vars.BASE_URL}}
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
@@ -22,6 +17,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Create .env file
+      uses: ozaytsev86/create-env-file@v1
+      with:
+        ENV_USER_EMAIL: ${{vars.USER_EMAIL}}
+        ENV_USER_PASSWORD: ${{vars.USER_PASSWORD}}
+        ENV_BASE_URL: ${{vars.BASE_URL}}
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v3
