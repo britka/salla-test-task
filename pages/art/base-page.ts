@@ -8,7 +8,8 @@ export class BasePage {
     }
 
     public async navigateTo(navigationItem: NavigationItem) {
-        await expect(this.page.locator("#" + navigationItem.valueOf()).last()).toBeVisible();
+        await expect(this.page.locator("#" + navigationItem.valueOf())).toHaveCount(2, {timeout: 30000});
+        await expect(this.page.locator("#" + navigationItem.valueOf()).last()).toBeVisible({timeout: 30000});
         await this.page.locator("#" + navigationItem.valueOf())
             .last()
             .click();
